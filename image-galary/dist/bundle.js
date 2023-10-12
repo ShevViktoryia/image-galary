@@ -413,11 +413,6 @@ h2, p {
 }
 
 body {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
   font-family: "Inter";
   height: 100%;
   width: 100%;
@@ -425,7 +420,57 @@ body {
   font-weight: normal;
   font-size: 20px;
   background-color: #000000;
-}`, "",{"version":3,"sources":["webpack://./assets/sass/pages/_index.sass","webpack://./assets/sass/core/_mixin.sass","webpack://./assets/sass/core/_base.sass"],"names":[],"mappings":"AAIA;EACE,sBAAA;EACA,uBAAA;AAFF;;AAIA;EACI,mBAAA;AADJ;;AAGA;EACE,UAAA;EACA,SAAA;AAAF;;AAEA;ECdE,aDeiB;ECdjB,mBDcuB;ECbvB,mBDa4B;ECZ5B,uBDYoC;EACpC,kBAAA;EACA,oBAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;EACA,yBEvBY;AF2Bd","sourcesContent":["@import '../../css/normolize.css'\r\n@import '../core/_base'\r\n@import '../core/_mixin'\r\n\r\nhtml\r\n  box-sizing: border-box\r\n  scroll-behavior: smooth\r\n\r\n*, *::after, *::before\r\n    box-sizing: inherit\r\n\r\nh2, p\r\n  padding: 0\r\n  margin: 0\r\n\r\nbody\r\n  @include display(flex, row, center, center)\r\n  position: absolute\r\n  font-family: 'Inter'\r\n  height: 100%\r\n  width: 100%\r\n  letter-spacing: 2px\r\n  font-weight: normal\r\n  font-size: 20px\r\n  background-color: $black_color","@mixin display($display, $direction, $align, $justify)\r\n  display: $display\r\n  flex-direction: $direction\r\n  align-items: $align\r\n  justify-content: $justify","$white_color: #FFFFFF\r\n$black_color: #000000\r\n$orange_color: #fd6a0ff1"],"sourceRoot":""}]);
+  color: #FFFFFF;
+}
+
+.header-wrapper {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid orange;
+}
+@media screen and (max-width: 670px) {
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.fa-camera {
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 300px;
+}
+
+#input-search {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid orange;
+}
+
+#search-icon {
+  color: orange;
+  position: absolute;
+  cursor: pointer;
+  top: 25%;
+  right: 4%;
+  transition: 1s;
+}`, "",{"version":3,"sources":["webpack://./assets/sass/pages/_index.sass","webpack://./assets/sass/core/_base.sass","webpack://./assets/sass/core/_mixin.sass"],"names":[],"mappings":"AAIA;EACE,sBAAA;EACA,uBAAA;AAFF;;AAIA;EACI,mBAAA;AADJ;;AAGA;EACE,UAAA;EACA,SAAA;AAAF;;AAEA;EACE,oBAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;EACA,yBCrBY;EDsBZ,cCvBY;ADwBd;;AACA;EACE,WAAA;EACA,eAAA;EE1BA,aF2BiB;EE1BjB,mBF0BuB;EEzBvB,mBFyB4B;EExB5B,8BFwBoC;EACpC,+BAAA;AAKF;AAJE;EALF;IExBE,aF8BmB;IE7BnB,sBF6ByB;IE5BzB,mBF4BiC;IE3BjC,uBF2ByC;EAUzC;AACF;;AATA;EACE,WAAA;EACA,YAAA;EACA,kBAAA;AAYF;;AAVA;EACE,kBAAA;EACA,YAAA;AAaF;;AAXA;EACE,sBAAA;EACA,WAAA;EACA,eAAA;EACA,iBAAA;EACA,mBAAA;EACA,aAAA;EACA,gCAAA;EACA,wBAAA;AAcF;;AAZA;EACE,aCnDa;EDoDb,kBAAA;EACA,eAAA;EACA,QAAA;EACA,SAAA;EACA,cAAA;AAeF","sourcesContent":["@import '../../css/normolize.css'\r\n@import '../core/_base'\r\n@import '../core/_mixin'\r\n\r\nhtml\r\n  box-sizing: border-box\r\n  scroll-behavior: smooth\r\n\r\n*, *::after, *::before\r\n    box-sizing: inherit\r\n\r\nh2, p\r\n  padding: 0\r\n  margin: 0\r\n\r\nbody\r\n  font-family: 'Inter'\r\n  height: 100%\r\n  width: 100%\r\n  letter-spacing: 2px\r\n  font-weight: normal\r\n  font-size: 20px\r\n  background-color: $black_color\r\n  color: $white_color\r\n\r\n.header-wrapper\r\n  width: 100%\r\n  padding: 0 30px\r\n  @include display(flex, row, center, space-between)\r\n  border-bottom: 3px solid $orange_color\r\n  @media screen and ( max-width: 670px)\r\n    @include display(flex, column, center, center)\r\n\r\n.fa-camera\r\n  width: 32px\r\n  height: 32px\r\n  margin-right: 20px\r\n\r\n.search-wrapper\r\n  position: relative\r\n  width: 300px\r\n\r\n#input-search\r\n  box-sizing: border-box\r\n  width: 100%\r\n  font-size: 1rem\r\n  padding: 8px 12px\r\n  border-radius: 25px\r\n  outline: none\r\n  transition: all 0.30s ease-in-out\r\n  border: 1px solid $orange_color\r\n\r\n#search-icon\r\n  color: $orange_color\r\n  position: absolute\r\n  cursor: pointer\r\n  top: 25%\r\n  right: 4%\r\n  transition: 1s","$white_color: #FFFFFF\r\n$black_color: #000000\r\n$orange_color: orange","@mixin display($display, $direction, $align, $justify)\r\n  display: $display\r\n  flex-direction: $direction\r\n  align-items: $align\r\n  justify-content: $justify"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -566,11 +611,9 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/svg/icon.svg */ "./assets/svg/icon.svg"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ./script.js */ "./script.js?f372"), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/svg+xml\">\r\n  <title>Image galary</title>\r\n</head>\r\n<body>\r\n  <" + "script async src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\"><" + "/script>\r\n</body>\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\r\n  <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/svg+xml\">\r\n  <title>Image galary</title>\r\n</head>\r\n<body>\r\n  <header>\r\n    <div class=\"header-wrapper\">\r\n      <div class=\"logo-wrapper\">\r\n        <h1><i class=\"fas fa-camera\" style=\"color: orange;\"> </i>Unsplash API</h1>\r\n      </div>\r\n      <div class=\"search-wrapper\">\r\n        <input id=\"input-search\" type=\"text\" placeholder=\"Search...\">\r\n        <i id=\"search-icon\" class=\"fas fa-search\"></i>\r\n      </div>\r\n    </div>\r\n  </header>\r\n  <main>\r\n    <div class=\"images-wrapper\"></div>\r\n  </main>\r\n  <footer></footer>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -929,16 +972,6 @@ function styleTagTransform(css, styleElement) {
   }
 }
 module.exports = styleTagTransform;
-
-/***/ }),
-
-/***/ "./script.js?f372":
-/*!*******************!*\
-  !*** ./script.js ***!
-  \*******************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/script.js";
 
 /***/ }),
 

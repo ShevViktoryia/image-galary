@@ -14,8 +14,6 @@ h2, p
   margin: 0
 
 body
-  @include display(flex, row, center, center)
-  position: absolute
   font-family: 'Inter'
   height: 100%
   width: 100%
@@ -23,3 +21,39 @@ body
   font-weight: normal
   font-size: 20px
   background-color: $black_color
+  color: $white_color
+
+.header-wrapper
+  width: 100%
+  padding: 0 30px
+  @include display(flex, row, center, space-between)
+  border-bottom: 3px solid $orange_color
+  @media screen and ( max-width: 670px)
+    @include display(flex, column, center, center)
+
+.fa-camera
+  width: 32px
+  height: 32px
+  margin-right: 20px
+
+.search-wrapper
+  position: relative
+  width: 300px
+
+#input-search
+  box-sizing: border-box
+  width: 100%
+  font-size: 1rem
+  padding: 8px 12px
+  border-radius: 25px
+  outline: none
+  transition: all 0.30s ease-in-out
+  border: 1px solid $orange_color
+
+#search-icon
+  color: $orange_color
+  position: absolute
+  cursor: pointer
+  top: 25%
+  right: 4%
+  transition: 1s
