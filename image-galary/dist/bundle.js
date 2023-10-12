@@ -2,6 +2,31 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/scripts/getImages.js":
+/*!*************************************!*\
+  !*** ./assets/scripts/getImages.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ getImages)
+/* harmony export */ });
+async function getImages() {
+  let url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'https://api.unsplash.com/search/photos?query=spring&per_page=18&orientation=landscape&client_id=iaxSnSV_heXYiXqX0CRn3No0xvCxJyq5zRIcCgtKWG8';
+  const res = await fetch(url);
+  const data = await res.json();
+  const images_wrapper = document.querySelector('.images-wrapper');
+  data.results.forEach(item => {
+    const image_container = document.createElement('div');
+    image_container.className = 'image-container';
+    image_container.style.backgroundImage = `url(${item.urls.regular})`;
+    images_wrapper.append(image_container);
+  });
+}
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./assets/css/normolize.css":
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./assets/css/normolize.css ***!
@@ -470,7 +495,27 @@ body {
   top: 25%;
   right: 4%;
   transition: 1s;
-}`, "",{"version":3,"sources":["webpack://./assets/sass/pages/_index.sass","webpack://./assets/sass/core/_base.sass","webpack://./assets/sass/core/_mixin.sass"],"names":[],"mappings":"AAIA;EACE,sBAAA;EACA,uBAAA;AAFF;;AAIA;EACI,mBAAA;AADJ;;AAGA;EACE,UAAA;EACA,SAAA;AAAF;;AAEA;EACE,oBAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;EACA,yBCrBY;EDsBZ,cCvBY;ADwBd;;AACA;EACE,WAAA;EACA,eAAA;EE1BA,aF2BiB;EE1BjB,mBF0BuB;EEzBvB,mBFyB4B;EExB5B,8BFwBoC;EACpC,+BAAA;AAKF;AAJE;EALF;IExBE,aF8BmB;IE7BnB,sBF6ByB;IE5BzB,mBF4BiC;IE3BjC,uBF2ByC;EAUzC;AACF;;AATA;EACE,WAAA;EACA,YAAA;EACA,kBAAA;AAYF;;AAVA;EACE,kBAAA;EACA,YAAA;AAaF;;AAXA;EACE,sBAAA;EACA,WAAA;EACA,eAAA;EACA,iBAAA;EACA,mBAAA;EACA,aAAA;EACA,gCAAA;EACA,wBAAA;AAcF;;AAZA;EACE,aCnDa;EDoDb,kBAAA;EACA,eAAA;EACA,QAAA;EACA,SAAA;EACA,cAAA;AAeF","sourcesContent":["@import '../../css/normolize.css'\r\n@import '../core/_base'\r\n@import '../core/_mixin'\r\n\r\nhtml\r\n  box-sizing: border-box\r\n  scroll-behavior: smooth\r\n\r\n*, *::after, *::before\r\n    box-sizing: inherit\r\n\r\nh2, p\r\n  padding: 0\r\n  margin: 0\r\n\r\nbody\r\n  font-family: 'Inter'\r\n  height: 100%\r\n  width: 100%\r\n  letter-spacing: 2px\r\n  font-weight: normal\r\n  font-size: 20px\r\n  background-color: $black_color\r\n  color: $white_color\r\n\r\n.header-wrapper\r\n  width: 100%\r\n  padding: 0 30px\r\n  @include display(flex, row, center, space-between)\r\n  border-bottom: 3px solid $orange_color\r\n  @media screen and ( max-width: 670px)\r\n    @include display(flex, column, center, center)\r\n\r\n.fa-camera\r\n  width: 32px\r\n  height: 32px\r\n  margin-right: 20px\r\n\r\n.search-wrapper\r\n  position: relative\r\n  width: 300px\r\n\r\n#input-search\r\n  box-sizing: border-box\r\n  width: 100%\r\n  font-size: 1rem\r\n  padding: 8px 12px\r\n  border-radius: 25px\r\n  outline: none\r\n  transition: all 0.30s ease-in-out\r\n  border: 1px solid $orange_color\r\n\r\n#search-icon\r\n  color: $orange_color\r\n  position: absolute\r\n  cursor: pointer\r\n  top: 25%\r\n  right: 4%\r\n  transition: 1s","$white_color: #FFFFFF\r\n$black_color: #000000\r\n$orange_color: orange","@mixin display($display, $direction, $align, $justify)\r\n  display: $display\r\n  flex-direction: $direction\r\n  align-items: $align\r\n  justify-content: $justify"],"sourceRoot":""}]);
+}
+
+.images-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  width: 400px;
+  height: 230px;
+  margin-top: 15px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}`, "",{"version":3,"sources":["webpack://./assets/sass/pages/_index.sass","webpack://./assets/sass/core/_base.sass","webpack://./assets/sass/core/_mixin.sass"],"names":[],"mappings":"AAIA;EACE,sBAAA;EACA,uBAAA;AAFF;;AAIA;EACI,mBAAA;AADJ;;AAGA;EACE,UAAA;EACA,SAAA;AAAF;;AAEA;EACE,oBAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;EACA,yBCrBY;EDsBZ,cCvBY;ADwBd;;AACA;EACE,WAAA;EACA,eAAA;EE1BA,aF2BiB;EE1BjB,mBF0BuB;EEzBvB,mBFyB4B;EExB5B,8BFwBoC;EACpC,+BAAA;AAKF;AAJE;EALF;IExBE,aF8BmB;IE7BnB,sBF6ByB;IE5BzB,mBF4BiC;IE3BjC,uBF2ByC;EAUzC;AACF;;AATA;EACE,WAAA;EACA,YAAA;EACA,kBAAA;AAYF;;AAVA;EACE,kBAAA;EACA,YAAA;AAaF;;AAXA;EACE,sBAAA;EACA,WAAA;EACA,eAAA;EACA,iBAAA;EACA,mBAAA;EACA,aAAA;EACA,gCAAA;EACA,wBAAA;AAcF;;AAZA;EACE,aCnDa;EDoDb,kBAAA;EACA,eAAA;EACA,QAAA;EACA,SAAA;EACA,cAAA;AAeF;;AAbA;EE3DE,aF4DiB;EE3DjB,mBF2DuB;EE1DvB,uBF0D4B;EEzD5B,6BFyDwC;EACxC,WAAA;EACA,iBAAA;EACA,cAAA;EACA,eAAA;AAmBF;;AAjBA;EACE,YAAA;EACA,aAAA;EACA,gBAAA;EACA,2BAAA;EACA,sBAAA;EACA,eAAA;AAoBF","sourcesContent":["@import '../../css/normolize.css'\r\n@import '../core/_base'\r\n@import '../core/_mixin'\r\n\r\nhtml\r\n  box-sizing: border-box\r\n  scroll-behavior: smooth\r\n\r\n*, *::after, *::before\r\n    box-sizing: inherit\r\n\r\nh2, p\r\n  padding: 0\r\n  margin: 0\r\n\r\nbody\r\n  font-family: 'Inter'\r\n  height: 100%\r\n  width: 100%\r\n  letter-spacing: 2px\r\n  font-weight: normal\r\n  font-size: 20px\r\n  background-color: $black_color\r\n  color: $white_color\r\n\r\n.header-wrapper\r\n  width: 100%\r\n  padding: 0 30px\r\n  @include display(flex, row, center, space-between)\r\n  border-bottom: 3px solid $orange_color\r\n  @media screen and ( max-width: 670px)\r\n    @include display(flex, column, center, center)\r\n\r\n.fa-camera\r\n  width: 32px\r\n  height: 32px\r\n  margin-right: 20px\r\n\r\n.search-wrapper\r\n  position: relative\r\n  width: 300px\r\n\r\n#input-search\r\n  box-sizing: border-box\r\n  width: 100%\r\n  font-size: 1rem\r\n  padding: 8px 12px\r\n  border-radius: 25px\r\n  outline: none\r\n  transition: all 0.30s ease-in-out\r\n  border: 1px solid $orange_color\r\n\r\n#search-icon\r\n  color: $orange_color\r\n  position: absolute\r\n  cursor: pointer\r\n  top: 25%\r\n  right: 4%\r\n  transition: 1s\r\n\r\n.images-wrapper\r\n  @include display(flex, row, flex-start, space-evenly)\r\n  width: 100%\r\n  max-width: 1280px\r\n  margin: 0 auto\r\n  flex-wrap: wrap\r\n\r\n.image-container\r\n  width: 400px\r\n  height: 230px\r\n  margin-top: 15px\r\n  background-position: center\r\n  background-size: cover\r\n  cursor: pointer","$white_color: #FFFFFF\r\n$black_color: #000000\r\n$orange_color: orange","@mixin display($display, $direction, $align, $justify)\r\n  display: $display\r\n  flex-direction: $direction\r\n  align-items: $align\r\n  justify-content: $justify"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1131,8 +1176,11 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.html */ "./index.html");
 /* harmony import */ var _assets_sass_pages_index_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/sass/pages/_index.sass */ "./assets/sass/pages/_index.sass");
+/* harmony import */ var _assets_scripts_getImages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/scripts/getImages */ "./assets/scripts/getImages.js");
 
 
+
+(0,_assets_scripts_getImages__WEBPACK_IMPORTED_MODULE_2__["default"])();
 })();
 
 /******/ })()

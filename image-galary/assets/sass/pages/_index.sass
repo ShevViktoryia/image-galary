@@ -57,3 +57,18 @@ body
   top: 25%
   right: 4%
   transition: 1s
+
+.images-wrapper
+  @include display(flex, row, flex-start, space-evenly)
+  width: 100%
+  max-width: 1280px
+  margin: 0 auto
+  flex-wrap: wrap
+
+.image-container
+  width: 400px
+  height: 230px
+  margin-top: 15px
+  background-position: center
+  background-size: cover
+  cursor: pointer
