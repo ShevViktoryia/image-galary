@@ -17,6 +17,7 @@ async function getImages() {
   const res = await fetch(url);
   const data = await res.json();
   const images_wrapper = document.querySelector('.images-wrapper');
+  images_wrapper.innerHTML = '';
   data.results.forEach(item => {
     const image_container = document.createElement('div');
     image_container.className = 'image-container';
@@ -658,7 +659,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/svg/icon.svg */ "./assets/svg/icon.svg"), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\r\n  <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/svg+xml\">\r\n  <title>Image galary</title>\r\n</head>\r\n<body>\r\n  <header>\r\n    <div class=\"header-wrapper\">\r\n      <div class=\"logo-wrapper\">\r\n        <h1><i class=\"fas fa-camera\" style=\"color: orange;\"> </i>Unsplash API</h1>\r\n      </div>\r\n      <div class=\"search-wrapper\">\r\n        <input id=\"input-search\" type=\"text\" placeholder=\"Search...\">\r\n        <i id=\"search-icon\" class=\"fas fa-search\"></i>\r\n      </div>\r\n    </div>\r\n  </header>\r\n  <main>\r\n    <div class=\"images-wrapper\"></div>\r\n  </main>\r\n  <footer></footer>\r\n</body>\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\r\n  <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/svg+xml\">\r\n  <title>Image galary</title>\r\n</head>\r\n<body>\r\n  <header>\r\n    <div class=\"header-wrapper\">\r\n      <div class=\"logo-wrapper\">\r\n        <h1><i class=\"fas fa-camera\" style=\"color: orange;\"> </i>Unsplash API</h1>\r\n      </div>\r\n      <div class=\"search-wrapper\">\r\n        <input id=\"input-search\" type=\"text\" placeholder=\"Search...\" autofocus autocomplete=\"off\">\r\n        <i id=\"search-icon\" class=\"fas fa-search\"></i>\r\n      </div>\r\n    </div>\r\n  </header>\r\n  <main>\r\n    <div class=\"images-wrapper\"></div>\r\n  </main>\r\n  <footer></footer>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -1181,6 +1182,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_assets_scripts_getImages__WEBPACK_IMPORTED_MODULE_2__["default"])();
+const input_search = document.querySelector('#input-search');
+const search_icon = document.querySelector('#search-icon');
+search_icon.onclick = () => {
+  if (input_search.value) {
+    (0,_assets_scripts_getImages__WEBPACK_IMPORTED_MODULE_2__["default"])(`https://api.unsplash.com/search/photos?query=${input_search.value}&per_page=18&orientation=landscape&client_id=iaxSnSV_heXYiXqX0CRn3No0xvCxJyq5zRIcCgtKWG8`);
+  }
+};
+document.onkeydown = e => {
+  if (e.key === 'Enter') {
+    if (input_search.value) {
+      (0,_assets_scripts_getImages__WEBPACK_IMPORTED_MODULE_2__["default"])(`https://api.unsplash.com/search/photos?query=${input_search.value}&per_page=18&orientation=landscape&client_id=iaxSnSV_heXYiXqX0CRn3No0xvCxJyq5zRIcCgtKWG8`);
+    }
+  }
+};
 })();
 
 /******/ })()

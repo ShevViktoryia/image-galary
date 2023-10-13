@@ -2,6 +2,7 @@ export default async function getImages(url = 'https://api.unsplash.com/search/p
   const res = await fetch(url);
   const data = await res.json();
   const images_wrapper = document.querySelector('.images-wrapper');
+  images_wrapper.innerHTML = '';
   data.results.forEach(item => {
     const image_container = document.createElement('div');
     image_container.className = 'image-container';
